@@ -8,6 +8,11 @@ sudo systemctl restart apache2
 
 sudo nano /etc/hosts
 
+   ServerAdmin admin@test.com
+   ServerName test.com
+   ServerAlias www.test.com
+   DocumentRoot /var/www/test.com/public_html
+
 https://hero-wars.ji7.ru/heroes/4/BkzJmTQUt7-CgoKCyyyyy8888
 https://hero-wars.fandom.com/wiki/Adventures/8/Fall_of_the_Celestial_City
 
@@ -18,6 +23,7 @@ https://accounts.google.com/o/oauth2/auth?client_id={client_id}&response_type=to
     Require all denied
 </Directory>
 
+sudo a2enmod rewrite
 
 DocumentRoot /home/mango/google-ads-api/public
 
@@ -27,24 +33,34 @@ sudo chmod -R 755 ./ (Phân quyền folder )
 
 
 <VirtualHost *:80>
-          ServerName www.baohanh.tamvietmedical.com.vn
-          ServerAlias baohanh.tamvietmedical.com.vn
+          ServerName www.pdservice.congtyphuongdong.vn 
+          ServerAlias pdservice.congtyphuongdong.vn
+        DocumentRoot /home/mango/service/public
 
-        DocumentRoot /home/mango/pdwarranty/public
+    ErrorLog /home/mango/service/error.log
+    CustomLog /home/mango/service/access.log combined
 
-    ErrorLog /home/mango/pdwarranty/error.log
-    CustomLog /home/mango/pdwarranty/access.log combined
-<Directory /home/mango/pdwarranty/public>
+<Directory /home/mango/service/public>
     AllowOverride all
     Require all granted
 </Directory>
+
+</VirtualHost>
+
+
+ alias composer='/usr/local/bin/composer'
+
 
 root@192.243.108.61
 0p41Ceso
 
 chown -R mango:mango pdwarranty/
 
-fixtrqbyfidnqzde
+hieu.tuhai2001@gmail.com
+ncmlfdxkjhrqsjch
+
+database,username:mnads
+password: "TqeQsb'TM[8{FR<&"
 
 https://accounts.google.com/o/oauth2/auth?client_id=your-client-id&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fadwords&redirect_uri=urn:ietf:wg:oauth:2.0:oob&access_type=offline&prompt=consent
 
@@ -52,40 +68,32 @@ https://accounts.google.com/o/oauth2/auth?client_id=your-client-id&response_type
 "https://${yourOktaDomain}/oauth2/default/v1/token&client_id={client_id}&client_secret={client_secret}&grant_type=authorization_code&redirect_uri={redirect_uri}&code={code}"
 
 	"developer-token": "BrtDh-R9uWJUYzJx1d_EoA"
-
-
-    "access_token": "ya29.a0AfH6SMAvioyjBWoV6GzZsgOZNHR87c2rVeBc-vi3xOnYgKUbnJLDYug_DducJIdEdQYvrfnDYkJkZy5FPWSgiuRtYWIdXDoiBP7gvyG_ldbyJ4XE82P4_UW_YdprzNDsetOZn297jjNbAlOkkEwA7UkdeJz9-37Qa8Y"
-
-
-    "refresh_token": "1//0e9ziTX81ha4QCgYIARAAGA4SNwF-L9IrfGvdO126kMYmaiyDDYQYVWL0sdqwmjB8X1hM0UmcADj_ySJJi0mQJIr8u2gks6vdoos"
-
-    "scope": "https://www.googleapis.com/auth/adwords",
-    "token_type": "Bearer"
-
 Client ID
-913802604798-vj3ednq724gfs2g5j7vipac2s2ovsmcl.apps.googleusercontent.com
+124712444776-6dfhlgdvb827j30mhpsd3s7hhalmumq2.apps.googleusercontent.com
 
 Client secret
-W96TEee3m6Dse_dAqg5Am22T
+hFz7FHT3B2VZOK92WV3qk8ip
 
+refresh_token
+"1//0eN_kfP5wLwAHCgYIARAAGA4SNwF-L9IrtLdFJghhLCbrXH2RM1gt1QPOgDM_VLFZ6soKOJShJyxzijpy15GQgb0hdef5ruVrE74"
 
-https://www.googleapis.com/auth/adwords
+"https://www.googleapis.com/auth/adwords"
 
 
 APP_NAME=Laravel
 APP_ENV=local
-APP_KEY=
+APP_KEY=base64:orD9jhxwFTZsHb8I09tXXS6AhbuNl9CI3Dd9FVjYt5c=
 APP_DEBUG=true
 APP_URL=http://localhost
 
 LOG_CHANNEL=stack
 
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
+DB_HOST=192.243.108.61
 DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME=root
-DB_PASSWORD=
+DB_DATABASE=pdwarranty
+DB_USERNAME=pdwarranty
+DB_PASSWORD=pdwarranty
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
@@ -98,12 +106,12 @@ REDIS_PASSWORD=null
 REDIS_PORT=6379
 
 MAIL_MAILER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS=null
+MAIL_HOST=smtp.googlemail.com
+MAIL_PORT=587
+MAIL_USERNAME=hieu.tuhai2001@gmail.com
+MAIL_PASSWORD=fixtrqbyfidnqzde
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=deaglelinhtrinh@gmail.com
 MAIL_FROM_NAME="${APP_NAME}"
 
 AWS_ACCESS_KEY_ID=
@@ -120,9 +128,102 @@ MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
 MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 
+
+
 php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
+sudo rm pdservice.congtyphuongdong.com.conf
+
+sudo ln -s /etc/httpd/sites-available/pdservice.congtyphuongdong.com.conf /etc/httpd/sites-enabled/
 
 
-sudo ln -s /etc/httpd/sites-available/example.com /etc/apache2/sites-enabled
+wget -O phpstorm.tar.gz https://download.jetbrains.com/webide/PhpStorm-2020.1.1.tar.gz?_ga=2.160865213.1870033120.1590048440-521251968.1588663586
+
+
+mkdir -p phpstorm
+
+
+tar -xzf phpstorm.tar.gz -C phpstorm/ --strip-components=1
+
+cd phpstorm/bin
+
+bash phpstorm.sh
+
+0.0.0.0 account.jetbrains.com
+
+1.2.3.4 account.jetbrains.com
+
+1.2.3.4 http://www.jetbrains.com
+
+1.2.3.4 www-weighted.jetbrains.com
+
+//check hash-password 
+private function passwordCorrect($suppliedPassword)
+{
+    return Hash::check($suppliedPassword, Auth::user()->password, []);
+}
+
+
+php artisan make:policy PostPolicy --model=Post
+
+ chmod +x bin/magento
+find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {} +
+find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} +
+chown -R :www-data . # Ubuntu
+chmod u+x bin/magentosudo a2enmod proxy_http
+
+sudo a2dismod php7.2
+sudo a2enmod php7.4
+sudo service restart apache2
+
+sudo update-alternatives --set php /usr/bin/php7.4
+sudo update-alternatives --set phar /usr/bin/phar7.4
+sudo update-alternatives --set phar.phar /usr/bin/phar.phar7.4
+sudo apt-get install phpmyadmin php-mbstring php-gettext
+
+file_uploads = On
+allow_url_fopen = On
+short_open_tag = On
+memory_limit = 512M
+upload_max_filesize = 128M
+max_execution_time = 3600
+
+sudo apt install php7.2 libapache2-mod-php7.2 php7.2-common php7.2-gmp php7.2-curl php7.2-soap php7.2-bcmath php7.2-intl php7.2-mbstring php7.2-xmlrpc  php7.2-mysql php7.2-gd php7.2-xml php7.2-cli php7.2-zip
+sudo apt install php7.4 libapache2-mod-php7.4 php7.4-common php7.4-gmp php7.4-curl php7.4-soap php7.4-bcmath php7.4-intl php7.4-mbstring php7.4-xmlrpc  php7.4-mysql php7.4-gd php7.4-xml php7.4-cli php7.4-zip
+
+/admin_cv8muy
+
+bin/magento setup:install \
+--base-url="http://magento.com/" \
+--db-host=localhost \
+--db-name=magento2 \
+--db-user=root \
+--db-password=honganhnguyen \
+--admin-firstname=Mango \
+--admin-lastname=Captain \
+--admin-email=hieu.tuhai2001@gmail.com \
+--admin-user=Mango \
+--admin-password=Honganhnguyen11022001 \
+--language=en_US \
+--currency=USD \
+--timezone=Asia/Ho_Chi_Minh \
+--use-rewrites=1
+
+
+yum -y install php73u php73u-pdo php73u-mysqlnd php73u-opcache php73u-xml php73u-mcrypt php73u-gd php73u-devel php73u-mysql php73u-intl php73u-mbstring php73u-bcmath php73u-json php73u-iconv php73u-soap
+
+
+GOOGLE_DRIVE_CLIENT_ID=935427211416-ajqchra21jorcef2u94a9jjianef1793.apps.googleusercontent.com
+GOOGLE_DRIVE_CLIENT_SECRET=UaNoX_XlUZ9QYW43g3nEerWn
+GOOGLE_DRIVE_REFRESH_TOKEN=1//047g9raALOtiCCgYIARAAGAQSNwF-L9IrMVQ4Z6_2V6eT-G6YvkasjgCNnpnwwhrRp43OgVwLDIE8cNU_GWKu_V1sFc_6_EkB1lQ
+GOOGLE_DRIVE_FOLDER_ID=1gJWuheA97QCYWpUgyzBIa_TIT-1OsYh-
+
+
+sudo systemctl restart crond.service
+
+API KEY : AIzaSyADUKwLTe4eMlldAOIS_SdAsmdcuDkSMh8
+
+sudo pkill -f nginx & wait $!
+sudo systemctl start nginx
+
