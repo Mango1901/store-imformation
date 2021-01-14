@@ -192,8 +192,6 @@ max_execution_time = 3600
 sudo apt install php7.2 libapache2-mod-php7.2 php7.2-common php7.2-gmp php7.2-curl php7.2-soap php7.2-bcmath php7.2-intl php7.2-mbstring php7.2-xmlrpc  php7.2-mysql php7.2-gd php7.2-xml php7.2-cli php7.2-zip
 sudo apt install php7.4 libapache2-mod-php7.4 php7.4-common php7.4-gmp php7.4-curl php7.4-soap php7.4-bcmath php7.4-intl php7.4-mbstring php7.4-xmlrpc  php7.4-mysql php7.4-gd php7.4-xml php7.4-cli php7.4-zip
 
-/admin_cv8muy
-
 bin/magento setup:install \
 --base-url="http://magento.com/" \
 --db-host=localhost \
@@ -226,4 +224,82 @@ API KEY : AIzaSyADUKwLTe4eMlldAOIS_SdAsmdcuDkSMh8
 
 sudo pkill -f nginx & wait $!
 sudo systemctl start nginx
+
+sudo nano /etc/nginx/conf.d/phpmyadmin.conf
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+
+    index index.html index.htm index.nginx-debian.html index.php;
+
+    server_name _;
+
+    location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        }
+
+    location / {
+        # First attempt to serve request as file, then
+        # as directory, then fall back to displaying a 404.
+        try_files \$uri \$uri/ =404;
+    }
+
+}
+//setup laravel nginx
+server {
+    listen 80;
+
+    server_name graphql.com www.graphql.com;
+
+    root /home/mango/pdhr/public;
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options "nosniff";
+
+    index index.php;
+
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    error_page 404 /index.php;
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+}
+fastcgi_temp_file_write_size 10m;
+fastcgi_busy_buffers_size 512k;
+fastcgi_buffer_size 512k;
+fastcgi_buffers 16 512k;
+client_max_body_size 50M;
+
+
+1.Tìm hiểu về roles and permissions
++ Định nghĩa 
++ use case 
++ So sánh mô hình tương tự 
+2.Cài một số offical add-ons
+3.Tạo module CMS 
+4. tách thành add-ons riêng   
+
+
+
+
 
