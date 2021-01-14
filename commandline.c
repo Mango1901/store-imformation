@@ -300,6 +300,64 @@ client_max_body_size 50M;
 4. tách thành add-ons riêng   
 
 
+cockroach start-single-node \
+--insecure \
+--store=node1 \
+--listen-addr=localhost:26257 \
+--http-addr=localhost:8080
 
+cockroach start \
+--insecure \
+--store=node \
+--listen-addr=localhost:26257 \
+--http-addr=localhost:8081 \
+--join=localhost:26257,localhost:26258,localhost:26259 \
+--background && \
+\
+cockroach start \
+--insecure \
+--store=node2 \
+--listen-addr=localhost:26258 \
+--http-addr=localhost:8081 \
+--join=localhost:26257,localhost:26258,localhost:26259 \
+--background && \
+\
+cockroach start \
+--insecure \
+--store=node3 \
+--listen-addr=localhost:26259 \
+--http-addr=localhost:8082 \
+--join=localhost:26257,localhost:26258,localhost:26259 \
+--background
 
+//install phpmyadmin
 
+server {
+  listen 80;
+  listen [::]:80;
+  server_name pma.example.com;
+  root /usr/share/phpmyadmin/;
+  index index.php index.html index.htm index.nginx-debian.html;
+
+  access_log /var/log/nginx/phpmyadmin_access.log;
+  error_log /var/log/nginx/phpmyadmin_error.log;
+
+  location / {
+    try_files $uri $uri/ /index.php;
+  }
+
+  location ~ ^/(doc|sql|setup)/ {
+    deny all;
+  }
+
+  location ~ \.php$ {
+    fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+    include snippets/fastcgi-php.conf;
+  }
+
+  location ~ /\.ht {
+    deny all;
+  }
+}
