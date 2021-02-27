@@ -367,3 +367,6 @@ server {
         "url": "git@github.com:Mango1901/mangocaptain-package.git"
     }
     ],
+
+
+centos 7 switch php: yum --enablerepo=remi-php73 search php | grep php73
