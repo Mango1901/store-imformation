@@ -371,6 +371,7 @@ server {
         "type": "git",
         "url": "git@github.com:Mango1901/mangocaptain-package.git"
     }
+<<<<<<< HEAD
 ],
 
 //create
