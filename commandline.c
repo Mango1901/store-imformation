@@ -1,31 +1,19 @@
-sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
-
-sudo nano /etc/apache2/sites-available/example.com.conf
-
-sudo a2ensite example.com.conf
-
-sudo systemctl restart apache2
-
-sudo nano /etc/hosts
-
-   ServerAdmin admin@test.com
-   ServerName test.com
-   ServerAlias www.test.com
-   DocumentRoot /var/www/test.com/public_html
-
-https://hero-wars.ji7.ru/heroes/4/BkzJmTQUt7-CgoKCyyyyy8888
-https://hero-wars.fandom.com/wiki/Adventures/8/Fall_of_the_Celestial_City
-
-https://accounts.google.com/o/oauth2/auth?client_id={client_id}&response_type=token&redirect_uri={redirect_uri}&scope={scope}
-
-<Directory />
-    AllowOverride none
-    Require all denied
-</Directory>
-
-sudo a2enmod rewrite
-
-DocumentRoot /home/mango/google-ads-api/public
+1. Chuyển sang brach production nếu có ticket mới (git checkout production) 
+2. git fetch --all --prune
+3. git pull
+4. khi hoàn thành thì check sang brand dev (git checkout dev --)
+5. Test then create branch git checkout -b feature/CU-(ID_tickets)-dev
+6. git add các file mình đã sửa (chỉ file mình đã sửa)
+7. git push origin feature/CU-(ID_tickets)
+8. Lên bicbutket Create pull request
+9. Gửi link pull request cho JC 
+10. Khi ông ý check xong thì lên magnilife.devzn.com
+11. gitk -> shaID rồi copy vào đâu đấy  
+12. git checkout production
+13. git checkout -b feature/CU-(ID_tickets)
+14. git cherry-pick shaID
+15.git push origin feature/CU-(ID_tickets)
+16. Create pull request 
 
 sudo chmod -R 777 ./ (Phân quyền tất cả )
 sudo chmod -R 644 ./ (Phân quyền file )
@@ -177,6 +165,7 @@ sudo a2dismod php7.2
 sudo a2enmod php7.4
 sudo service restart apache2
 
+
 sudo update-alternatives --set php /usr/bin/php7.4
 sudo update-alternatives --set phar /usr/bin/phar7.4
 sudo update-alternatives --set phar.phar /usr/bin/phar.phar7.4
@@ -193,11 +182,27 @@ sudo apt install php7.2 libapache2-mod-php7.2 php7.2-common php7.2-gmp php7.2-cu
 sudo apt install php7.4 libapache2-mod-php7.4 php7.4-common php7.4-gmp php7.4-curl php7.4-soap php7.4-bcmath php7.4-intl php7.4-mbstring php7.4-xmlrpc  php7.4-mysql php7.4-gd php7.4-xml php7.4-cli php7.4-zip
 
 bin/magento setup:install \
---base-url="http://magento.com/" \
---db-host=localhost \
+--base-url="http://magento-local.local/" \
+--db-host=127.0.0.1 \
 --db-name=magento2 \
---db-user=root \
---db-password=honganhnguyen \
+--db-user=mango \
+--db-password=mango \
+--admin-firstname=Mango \
+--admin-lastname=Captain \
+--admin-email=hieu.tuhai2001@gmail.com \
+--admin-user=Mango \
+--admin-password=Honganhnguyen11022001 \
+--language=en_US \
+--currency=USD \
+--timezone=Asia/Ho_Chi_Minh \
+--use-rewrites=1
+
+bin/magento setup:install \
+--base-url="http://magento-test.local/" \
+--db-host=127.0.0.1 \
+--db-name=magento-test \
+--db-user=mango \
+--db-password=mango \
 --admin-firstname=Mango \
 --admin-lastname=Captain \
 --admin-email=hieu.tuhai2001@gmail.com \
@@ -366,4 +371,189 @@ server {
         "type": "git",
         "url": "git@github.com:Mango1901/mangocaptain-package.git"
     }
-    ],
+],
+
+//create
+php artisan elastic:create-index "App\MyIndexConfigurator"
+
+//update
+php artisan elastic:update-index "App\MyIndexConfigurator"
+//delete
+php artisan elastic:drop-index "App\MyIndexConfigurator"
+
+
+2A3BC-4DE56F-789GHI
+
+
+SCOUT_DRIVER=elastic
+
+composer self-update --1
+composer self-update --2
+composer self-update --rollback
+ alias composer='/usr/local/bin/composer'
+
+74.220.219.228
+
+ctyphuongdongvn@gmail.com
+
+./ngrok http 1102
+./ngrok help
+
+wpscan --url http://congtyphuongdong.vn/wp-login.php --passwords /home/mango/Downloads/rockyou.txt --usernames ctyphuongdongvn@gmail.com --wp-content-dir http://congtyphuongdong.vn/wp-login.php
+
+192.243.108.61/phpmyadmin
+
+username: pdwarranty
+password: 80Qf2ruOVnGwaND4
+
+mnads
+@Mnads124
+
+http://service.tamvietmedical.com.vn/CongtyTamViet/uploads/hack22.php
+
+http://192.243.108.61/pdwarranty/bootstrap/z=2WUpKVMz8%3fHQ5N.php
+
+http://apitreetask.congtyphuongdong.vn/mtask/public/images/node/EmbPAWi4wP1hYZyFWoVsHwCkibvoyvas1QfTmVvT.php
+
+http://pdwork.congtyphuongdong.vn/public/images/node/hack22.php
+EmbPAWi4wP1hYZyFWoVsHwCkibvoyvas1QfTmVvT.php
+
+
+Huyenbon:$2y$10$/672eBpB.sSUTaQoLmocJOB4LBV45f6bvVxgTxaTu.yc8rcl1nhTu
+
+Phuongdong:$2y$10$ZcrNwOE9GSq0HDIQI0qpSedt9ZORS5vSlrh7y6BRZISK4.sLMN6Ty
+
+mango:$2y$10$5y/sgCR/hN.oR60tTjHDd.BVpgegjom4B4Uen2e.5vSZrgEKGWeIW
+
+0L8n81V2w1BrFZJEuKiNNdfTrRg04eTPKF4WTRMz.jpeg
+
+/etc/httpd/sites-available/baohanh.tamvietmedical.com.vn.conf
+/etc/httpd/sites-available/mnads.congtyphuongdong.vn.conf
+/etc/httpd/sites-available/pdservice.congtyphuongdong.vn.conf
+/etc/httpd/sites-available/pdwork.congtyphuongdong.vn.conf
+/etc/httpd/sites-available/service.tamvietmedical.com.vn.conf
+/etc/httpd/sites-enabled/mnads.congtyphuongdong.vn.conf
+/etc/httpd/sites-enabled/pdservice.congtyphuongdong.vn
+/etc/httpd/sites-enabled/pdservice.congtyphuongdong.vn.conf
+/etc/httpd/sites-enabled/pdwork.congtyphuongdong.vn.conf
+/etc/httpd/sites-enabled/service.tamvietmedical.com.vn.conf
+
+curl -H "Content-Type: application/json" -XPOST "localhost:9200/bank/_bulk?pretty&refresh" --data-binary "@accounts.json"
+curl "localhost:9200/_cat/indices?v=true"
+
+bin/magento setup:install \
+--base-url="http://magento-test.local/" \
+--db-host=127.0.0.1 \
+--db-name=magento-test \
+--db-user=mango \
+--db-password=mango \
+--admin-firstname=Mango \
+--admin-lastname=Captain \
+--admin-email=hieu.tuhai2001@gmail.com \
+--admin-user=Mango \
+--admin-password=Honganhnguyen11022001 \
+--language=en_US \
+--currency=USD \
+--timezone=Asia/Ho_Chi_Minh \
+--use-rewrites=1
+
+
+http://paperdivas_m2-store.com
+
+
+"bin/magento" \
+"setup:install" \
+"--base-url=http://paperdivas-m2-store.com/" \
+"--elasticsearch-host=localhost:9201" \
+"--db-host=127.0.0.1:6603" \
+"--db-name=magento2_paperdivas" \
+"--db-user=root" \
+"--db-password=secret" \
+"--admin-firstname=Mango" \
+"--admin-lastname=Captain" \
+"--admin-email=hieu.tuhai2001@gmail.com" \
+"--admin-user=Mango" \
+"--admin-password=Honganhnguyen11022001" \
+"--backend-frontname=admin" \
+"--language=en_US" \
+"--currency=USD" \
+"--timezone=Asia/Ho_Chi_Minh" \
+"--use-rewrites=1"
+
+
+Backpack:
+https://docs.google.com/presentation/d/16jRBPBBBookPD8kF4f_UD0sUU7Yr9VtU51Pf1k3tiaA/edit#slide=id.gc055ea162d_0_58
+
+
+eval "$(ssh-agent -s)"
+ssh-add {key-path}
+
+bin/magento deploy:mode:set developer
+
+gpasswd -d user group
+usermod -a -G group user
+
+find . -type d -exec chmod 0775 {} \; 
+find . -type f -exec chmod 0664 {} \;
+
+Centos7:
+sudo firewall-cmd --add-service=http
+sudo firewall-cmd --add-service=https
+sudo firewall-cmd --runtime-to-permanent
+sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+
+
+acount_job:
+nguyenvohungphuong@gmail.com
+noverAsia@123
+
+
+git config user.name "Joe Nguyen"
+git config user.email internal+joen@coredevelop.com
+
+
+
+fa24d17c4d29db9c4c6d9d011f5ccc9cbe76036f
+
+
+data-bind="value: couponCode, attr:{disabled:isApplied() , placeholder: $t('Enter discount code')} " />
+
+
+data-bind="visible: isVisible(), click: removeAll"
+
+
+
+ <item name="config" xsi:type="array">
+ <item name="componentDisabled" xsi:type="boolean">true</item>
+ </item>
+
+[["Hue","123"],["Dat","Hue"],["Lam","Hue"],["Trinh","Dat"],["1","Hue"]]
+
+
+
+internal+testX@coredevelop.com
+Core Test
+
+
+admin
+coredev@123
+
+
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+
+echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
+
+
+#docker run elasticsearch
+
+sudo docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.8.14 
+cd docker/mysqldev && sudo docker-compose up -d
+docker exec -it <id> /bin/bash
+bin/elasticsearch-plugin install analysis-icu
+bin/elasticsearch-plugin install analysis-phonetic
+
+
+UPDATE core_config_data SET value = '${mysql_url}' WHERE path = 'web/secure/base_url';
