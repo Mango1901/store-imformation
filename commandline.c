@@ -558,3 +558,22 @@ bin/elasticsearch-plugin install analysis-phonetic
 
 
 UPDATE core_config_data SET value = '${mysql_url}' WHERE path = 'web/secure/base_url';
+
+   require(["jquery"], function ($) {
+        $(function () {
+            var searchQuote = localStorage.input === 'true' ? true : false;
+            var searchOrder = localStorage.output === "true" ? true : false;
+            $('#input-chk__option-quotes').prop('checked', searchQuote || false);
+            $('#input-chk__option-so').prop('checked', searchOrder || false);
+        });
+
+        $('#input-chk__option-quotes').on('change', function () {
+            localStorage.input = $("#input-chk__option-quotes").is(':checked');
+            console.log($("#input-chk__option-quotes").is(':checked'));
+        });
+
+        $('#input-chk__option-so').on('change', function () {
+            localStorage.output = $("#input-chk__option-so").is(':checked');
+            console.log($("#input-chk__option-so").is(':checked'));
+        });
+    });
